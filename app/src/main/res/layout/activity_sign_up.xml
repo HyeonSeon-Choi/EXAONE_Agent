@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_white"
+    android:background="#F5F7FA"
     android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -13,312 +12,323 @@
         android:layout_height="wrap_content"
         android:padding="24dp">
 
-        <!-- 상단: 돌아가기 & 브랜드 -->
-        <LinearLayout
-            android:id="@+id/layout_top"
-            android:layout_width="0dp"
+        <!-- 상단 돌아가기 -->
+        <TextView
+            android:id="@+id/tvBack"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            app:layout_constraintTop_toTopOf="parent"
+            android:text="← 돌아가기"
+            android:textColor="#999999"
+            android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/tv_back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="← 돌아가기"
-                android:textSize="14sp"
-                android:textColor="@color/text_secondary" />
+        <!-- 로고 -->
+        <LinearLayout
+            android:id="@+id/layoutLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvBack">
 
             <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="#E02020" />
 
             <TextView
-                android:id="@+id/tv_brand"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="● EXAONE 챗봇"
-                android:textSize="14sp"
-                android:textColor="@color/text_secondary" />
+                android:text="EXAONE 챗봇"
+                android:textColor="#1A1F36"
+                android:textSize="18sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
-        <!-- 제목 및 설명 -->
         <TextView
-            android:id="@+id/tv_title"
+            android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:text="회원가입"
+            android:textColor="#1A1F36"
             android:textSize="28sp"
             android:textStyle="bold"
-            android:textColor="@color/text_primary"
-            android:layout_marginTop="24dp"
-            app:layout_constraintTop_toBottomOf="@id/layout_top"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutLogo" />
 
         <TextView
-            android:id="@+id/tv_description"
+            android:id="@+id/tvSubTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="사내 업무 지원을 위한 계정을 생성합니다."
-            android:textSize="14sp"
-            android:textColor="@color/text_secondary"
             android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@id/tv_title"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <!-- 폼 영역 컨테이너 -->
-        <LinearLayout
-            android:id="@+id/layout_form"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="24dp"
-            app:layout_constraintTop_toBottomOf="@id/tv_description"
+            android:text="사내 업무 지원을 위한 계정을 생성합니다."
+            android:textColor="#666666"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
-            <!-- 1행: 사번 ID, 이름 -->
-            <LinearLayout
+        <!-- 입력 카드 -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            app:layout_constraintTop_toBottomOf="@id/tvSubTitle"
+            app:strokeColor="#E5E7EB"
+            app:strokeWidth="1dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:padding="20dp">
 
-                <!-- 사번 ID -->
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:layout_marginEnd="8dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="사번 ID (사번)"
-                        android:textSize="12sp"
-                        android:textColor="@color/text_secondary" />
-
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
-                        app:cardCornerRadius="12dp"
-                        app:cardElevation="0dp"
-                        app:strokeColor="@color/card_border"
-                        app:strokeWidth="1dp">
-
-                        <EditText
-                            android:id="@+id/et_employee_id"
-                            android:layout_width="match_parent"
-                            android:layout_height="48dp"
-                            android:paddingStart="16dp"
-                            android:paddingEnd="16dp"
-                            android:background="@android:color/transparent"
-                            android:hint="ex) 20240123"
-                            android:textSize="14sp"
-                            android:inputType="number"
-                            android:textColorHint="@color/text_hint" />
-                    </com.google.android.material.card.MaterialCardView>
-                </LinearLayout>
-
-                <!-- 이름 -->
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:layout_marginStart="8dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="이름"
-                        android:textSize="12sp"
-                        android:textColor="@color/text_secondary" />
-
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
-                        app:cardCornerRadius="12dp"
-                        app:cardElevation="0dp"
-                        app:strokeColor="@color/card_border"
-                        app:strokeWidth="1dp">
-
-                        <EditText
-                            android:id="@+id/et_name"
-                            android:layout_width="match_parent"
-                            android:layout_height="48dp"
-                            android:paddingStart="16dp"
-                            android:paddingEnd="16dp"
-                            android:background="@android:color/transparent"
-                            android:hint="실명 입력"
-                            android:textSize="14sp"
-                            android:inputType="textPersonName"
-                            android:textColorHint="@color/text_hint" />
-                    </com.google.android.material.card.MaterialCardView>
-                </LinearLayout>
-            </LinearLayout>
-
-            <!-- 비밀번호 -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="16dp">
-
-                <TextView
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="비밀번호"
-                    android:textSize="12sp"
-                    android:textColor="@color/text_secondary" />
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.5" />
 
-                <com.google.android.material.card.MaterialCardView
+                <!-- 사원 ID -->
+                <TextView
+                    android:id="@+id/labelId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="사원 ID (사번)"
+                    android:textColor="#1A1F36"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilId"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    app:boxCornerRadiusBottomEnd="8dp"
+                    app:boxCornerRadiusBottomStart="8dp"
+                    app:boxCornerRadiusTopEnd="8dp"
+                    app:boxCornerRadiusTopStart="8dp"
+                    app:layout_constraintEnd_toStartOf="@id/guideline"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/labelId">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etId"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="ex) 20240123"
+                        android:inputType="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- 이름 -->
+                <TextView
+                    android:id="@+id/labelName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="이름"
+                    android:textColor="#1A1F36"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@id/guideline"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginStart="8dp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilName"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="8dp"
+                    app:boxCornerRadiusBottomEnd="8dp"
+                    app:boxCornerRadiusBottomStart="8dp"
+                    app:boxCornerRadiusTopEnd="8dp"
+                    app:boxCornerRadiusTopStart="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/guideline"
+                    app:layout_constraintTop_toBottomOf="@id/labelName">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="실명 입력"
+                        android:inputType="textPersonName" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- 비밀번호 -->
+                <TextView
+                    android:id="@+id/labelPassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="비밀번호"
+                    android:textColor="#1A1F36"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tilId" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilPassword"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="0dp"
-                    app:strokeColor="@color/card_border"
-                    app:strokeWidth="1dp">
+                    android:layout_marginTop="8dp"
+                    app:boxCornerRadiusBottomEnd="8dp"
+                    app:boxCornerRadiusBottomStart="8dp"
+                    app:boxCornerRadiusTopEnd="8dp"
+                    app:boxCornerRadiusTopStart="8dp"
+                    app:endIconMode="password_toggle"
+                    app:layout_constraintTop_toBottomOf="@id/labelPassword">
 
-                    <EditText
-                        android:id="@+id/et_password"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etPassword"
                         android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:paddingStart="16dp"
-                        android:paddingEnd="16dp"
-                        android:background="@android:color/transparent"
+                        android:layout_height="wrap_content"
                         android:hint="비밀번호 입력"
-                        android:textSize="14sp"
-                        android:inputType="textPassword"
-                        android:textColorHint="@color/text_hint" />
-                </com.google.android.material.card.MaterialCardView>
-            </LinearLayout>
-
-            <!-- 부서 / 직급 -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="16dp">
+                        android:inputType="textPassword" />
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <!-- 부서 -->
-                <LinearLayout
+                <TextView
+                    android:id="@+id/labelDept"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="부서"
+                    android:textColor="#1A1F36"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tilPassword" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilDept"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:layout_marginEnd="8dp">
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    app:boxCornerRadiusBottomEnd="8dp"
+                    app:boxCornerRadiusBottomStart="8dp"
+                    app:boxCornerRadiusTopEnd="8dp"
+                    app:boxCornerRadiusTopStart="8dp"
+                    app:layout_constraintEnd_toStartOf="@id/guideline"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/labelDept">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="부서"
-                        android:textSize="12sp"
-                        android:textColor="@color/text_secondary" />
-
-                    <com.google.android.material.card.MaterialCardView
+                    <AutoCompleteTextView
+                        android:id="@+id/spinnerDept"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
-                        app:cardCornerRadius="12dp"
-                        app:cardElevation="0dp"
-                        app:strokeColor="@color/card_border"
-                        app:strokeWidth="1dp">
-
-                        <Spinner
-                            android:id="@+id/sp_department"
-                            android:layout_width="match_parent"
-                            android:layout_height="48dp"
-                            android:paddingStart="16dp"
-                            android:paddingEnd="16dp"
-                            android:background="@android:color/transparent"
-                            android:spinnerMode="dropdown"
-                            android:entries="@array/department_list"
-                            android:prompt="@string/department_prompt" />
-                    </com.google.android.material.card.MaterialCardView>
-                </LinearLayout>
+                        android:hint="선택하세요"
+                        android:inputType="none" />
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <!-- 직급 -->
-                <LinearLayout
+                <TextView
+                    android:id="@+id/labelPosition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="직급"
+                    android:textColor="#1A1F36"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@id/guideline"
+                    app:layout_constraintTop_toBottomOf="@id/tilPassword"
+                    android:layout_marginStart="8dp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilPosition"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:layout_marginStart="8dp">
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="8dp"
+                    app:boxCornerRadiusBottomEnd="8dp"
+                    app:boxCornerRadiusBottomStart="8dp"
+                    app:boxCornerRadiusTopEnd="8dp"
+                    app:boxCornerRadiusTopStart="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/guideline"
+                    app:layout_constraintTop_toBottomOf="@id/labelPosition">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/spinnerPosition"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="선택하세요"
+                        android:inputType="none" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- 가입 버튼 -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSignUp"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_marginTop="32dp"
+                    android:backgroundTint="#F0F2F5"
+                    android:text="가입 완료"
+                    android:textColor="#999999"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:cornerRadius="8dp"
+                    app:layout_constraintTop_toBottomOf="@id/tilDept" />
+
+                <!-- 하단 링크 -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnSignUp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="직급"
-                        android:textSize="12sp"
-                        android:textColor="@color/text_secondary" />
+                        android:text="이미 계정이 있으신가요? "
+                        android:textColor="#666666" />
 
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:id="@+id/tvLoginLink"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
-                        app:cardCornerRadius="12dp"
-                        app:cardElevation="0dp"
-                        app:strokeColor="@color/card_border"
-                        app:strokeWidth="1dp">
-
-                        <Spinner
-                            android:id="@+id/sp_position"
-                            android:layout_width="match_parent"
-                            android:layout_height="48dp"
-                            android:paddingStart="16dp"
-                            android:paddingEnd="16dp"
-                            android:background="@android:color/transparent"
-                            android:spinnerMode="dropdown"
-                            android:entries="@array/position_list"
-                            android:prompt="@string/position_prompt" />
-                    </com.google.android.material.card.MaterialCardView>
+                        android:text="로그인하기"
+                        android:textColor="#E02020"
+                        android:textStyle="bold" />
                 </LinearLayout>
-            </LinearLayout>
 
-            <!-- 가입 완료 버튼 -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_sign_up"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:layout_marginTop="24dp"
-                android:text="가입 완료"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:textColor="@android:color/white"
-                android:backgroundTint="@color/exaone_red"
-                app:cornerRadius="12dp" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
 
-            <!-- 이미 계정이 있으신가요? 로그인하기 -->
-            <TextView
-                android:id="@+id/tv_login_link"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="이미 계정이 있으신가요? 로그인하기"
-                android:textSize="14sp"
-                android:textColor="@color/exaone_red"
-                android:layout_marginTop="16dp"
-                android:layout_gravity="center_horizontal" />
-        </LinearLayout>
-
-        <!-- ProgressBar -->
-        <ProgressBar
-            android:id="@+id/progress_bar"
+        <!-- 카피라이트 -->
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:indeterminateTint="@color/exaone_red"
-            app:layout_constraintTop_toBottomOf="@id/layout_form"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="24dp"
+            android:text="© 2025 EXAONE Corp. All rights reserved."
+            android:textColor="#999999"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardInput" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+</androidx.core.widget.NestedScrollView>
